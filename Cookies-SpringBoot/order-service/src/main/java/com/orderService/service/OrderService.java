@@ -6,6 +6,7 @@ import com.orderService.model.Order;
 import com.orderService.model.OrderItem;
 import com.orderService.repository.OrderRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,10 +16,8 @@ import java.util.List;
 
 @Service
 public class OrderService {
-    private final OrderRepository orderRepository;
-    public OrderService(OrderRepository orderRepository){
-        this.orderRepository = orderRepository;
-    }
+    @Autowired
+    private OrderRepository orderRepository;
     @Transactional
     public void placeOrder(OrderRequest orderRequest){
         Order order = new Order();
