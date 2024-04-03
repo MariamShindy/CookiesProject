@@ -1,15 +1,12 @@
 package com.feedbackService.model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table
 public class Feedback {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String message ;
     Date creationDate;

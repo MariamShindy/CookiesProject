@@ -13,7 +13,7 @@ public class UserController {
     private UserService userService;
 
     // !---------------should handle each request URL ------------!
-    @PostMapping
+    @PostMapping("/saveUser")
     @ResponseStatus(HttpStatus.CREATED)
     public void saveUser(@RequestBody UserRequest userRequest){
         userService.saveUser(userRequest);

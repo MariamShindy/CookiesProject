@@ -1,13 +1,12 @@
 package com.UserService.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "\"ApplicationUsers\"")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id ;
     String userName ;
     String phone ;
