@@ -7,9 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "`order`")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id ;
     BigDecimal totalPrice;
     Date orderDate ;
