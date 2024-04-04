@@ -20,7 +20,7 @@ public class WishlistController {
         return ResponseEntity.ok(wishlist);
     }
 
-    @PostMapping("/AddToWishlist")
+    @PostMapping("/addItemToWishlist")
     public ResponseEntity<Wishlist> addItemToWishlist(@RequestBody Wishlist wishlistItem) {
         Wishlist addedItem = wishlistService.addItemToWishlist(wishlistItem);
         return ResponseEntity.ok(addedItem);
