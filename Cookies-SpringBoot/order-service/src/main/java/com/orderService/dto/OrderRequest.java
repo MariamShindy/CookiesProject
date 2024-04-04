@@ -1,6 +1,7 @@
 package com.orderService.dto;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,10 @@ private List<OrderItemsDto> orderItemsDtoList;
     private String shippingAddress;
     private Date orderDate;
 
+    public OrderRequest() {
+        this.orderItemsDtoList = new ArrayList<>();
+    }
+    
     public List<OrderItemsDto> getOrderItemsDtoList() {
         return orderItemsDtoList;
     }
