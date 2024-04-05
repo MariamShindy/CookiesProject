@@ -1,5 +1,6 @@
 package com.CartService.controller;
 
+import com.CartService.dto.CartRequest;
 import com.CartService.model.Cart;
 import com.CartService.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ public class CartController {
         return ResponseEntity.ok(cart);
     }
 
-    @PostMapping("/AddToCart")
-    public ResponseEntity<Cart> addItemToCart(@RequestBody Cart cartItem) {
-        Cart addedItem = cartService.addItemToCart(cartItem);
+    @PostMapping("/addToCart")
+    public ResponseEntity<Cart> addItemToCart(@RequestBody CartRequest cartItemRequest) {
+        Cart addedItem = cartService.addItemToCart(cartItemRequest);
         return ResponseEntity.ok(addedItem);
     }
 

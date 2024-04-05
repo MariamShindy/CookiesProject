@@ -2,14 +2,12 @@ package com.CartService.dto;
 
 public class CartRequest {
     private int userId;
-
     private int productId;
-
     private int quantity;
 
     // Constructors, getters, and setters
-    CartRequest(){}
-    CartRequest(int productId, int userId, int quantity) {
+    public CartRequest(){}
+    public CartRequest(int productId, int userId, int quantity) {
         this.quantity = quantity;
         this.productId = productId;
         this.userId = userId;

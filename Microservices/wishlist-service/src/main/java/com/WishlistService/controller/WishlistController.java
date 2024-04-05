@@ -21,8 +21,8 @@ public class WishlistController {
     }
 
     @PostMapping("/addItemToWishlist")
-    public ResponseEntity<Wishlist> addItemToWishlist(@RequestBody Wishlist wishlistItem) {
-        Wishlist addedItem = wishlistService.addItemToWishlist(wishlistItem);
+    public ResponseEntity<Wishlist> addItemToWishlist(@RequestBody WishlistRequest wishlistItemRequest) {
+        Wishlist addedItem = wishlistService.addItemToWishlist(wishlistItemRequest);
         return ResponseEntity.ok(addedItem);
     }
 
@@ -31,4 +31,6 @@ public class WishlistController {
         wishlistService.removeItemFromWishlist(wishlistId);
         return ResponseEntity.noContent().build();
     }
+
+
 }
