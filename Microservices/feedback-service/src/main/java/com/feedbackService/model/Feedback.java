@@ -13,7 +13,6 @@ public class Feedback {
     int userId; // User identifier
 
     public Feedback(){
-
     }
 
     public Feedback(int id, String message, Date creationDate, int userId) {
