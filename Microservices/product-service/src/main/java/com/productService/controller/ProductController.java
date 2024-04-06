@@ -32,7 +32,7 @@ public class ProductController {
         ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:9090/api/cart/addToCart",productRequest,String.class);
         return response;
     }
-    @PostMapping("/addToCart/{userId}")
+    @PostMapping("/addToWishlist/{userId}")
     public ResponseEntity<String> addToWishlist(@PathVariable int userId , @RequestBody ProductRequest productRequest){
         ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:9095/api/wishlist/addItemToWishlist",productRequest,String.class);
         return response;

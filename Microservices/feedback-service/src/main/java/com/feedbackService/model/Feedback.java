@@ -1,5 +1,8 @@
 package com.feedbackService.model;
+
+import com.UserService.model.User;
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
@@ -7,17 +10,25 @@ import java.util.Date;
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    int  id;
+    int userId;
     String message ;
     Date creationDate;
+
+    // Add a reference to the user who submitted the feedback
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Feedback(){
 
     }
 
-    public Feedback(int id, String message, Date creationDate) {
+    public Feedback(int id, String message, Date creationDate, User user) {
         this.id = id;
         this.message = message;
         this.creationDate = creationDate;
+        this.user = user;
     }
 
 
@@ -44,4 +55,13 @@ public class Feedback {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
 }

@@ -2,8 +2,6 @@ package com.UserService.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "\"ApplicationUsers\"")
 public class User {
@@ -16,6 +14,7 @@ public class User {
     String password ;
     String address ;
     int userType ;
+
     public User(){
 
     }

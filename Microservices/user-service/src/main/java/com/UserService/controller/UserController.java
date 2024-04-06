@@ -1,6 +1,7 @@
 package com.UserService.controller;
 
 import com.UserService.dto.UserRequest;
+import com.UserService.dto.UserResponse;
 import com.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveUser(@RequestBody UserRequest userRequest) {
         userService.saveUser(userRequest);
+    }
+
+
+    @GetMapping("/getUserDetailsByID/{id}")
+    public UserResponse getUserDetailsByID(@PathVariable int id){
+        return userService.getUserDetailsByID(id);
     }
 
 }

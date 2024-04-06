@@ -6,6 +6,8 @@ public class FeedbackRequest {
     String message ;
     Date creationDate;
 
+    private int userId;
+
     public FeedbackRequest(){
 
     }
@@ -29,4 +31,13 @@ public class FeedbackRequest {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
 }
