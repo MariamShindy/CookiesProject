@@ -16,17 +16,29 @@ public class Order {
     Date orderDate ;
     String status;
     String shipping_Address;
+    int userId ;
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItemsList;
     public Order(){
 
     }
-    public Order(long id, BigDecimal totalPrice, Date orderDate, String status, String shipping_Address) {
+
+    public Order(long id, BigDecimal totalPrice, Date orderDate, String status, String shipping_Address, int userId, List<OrderItem> orderItemsList) {
         this.id = id;
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
         this.status = status;
         this.shipping_Address = shipping_Address;
+        this.userId = userId;
+        this.orderItemsList = orderItemsList;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     public List<OrderItem> getOrderItemsList() {
         return orderItemsList;

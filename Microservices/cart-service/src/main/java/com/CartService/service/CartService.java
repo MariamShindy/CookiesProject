@@ -24,6 +24,12 @@ public class CartService {
         cartRepository.deleteById(cartId);
     }
 
+    //remove items from cart after placing an order
+    public void removeItemsFromCartToOrder(int userId){
+     List<Cart> userCart = cartRepository.findByUserId(userId);
+     cartRepository.deleteAll();
+    }
+
     private Cart mapCartItemRequestToCartItem(CartRequest cartRequest){
         Cart cart = new Cart();
         cart.setCartId(cartRequest.getUserId());

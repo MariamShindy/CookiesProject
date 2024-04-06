@@ -33,4 +33,11 @@ public class CartController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/removeItemsFromCartToOrder/{userId}") // Endpoint to remove items from cart by user ID
+    public ResponseEntity<Void> removeItemsFromCartToOrder(@PathVariable int userId) {
+        cartService.removeItemsFromCartToOrder(userId);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

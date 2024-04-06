@@ -10,8 +10,24 @@ private List<OrderItemsDto> orderItemsDtoList;
     private String shippingAddress;
     private Date orderDate;
 
+    int userId ;
     public OrderRequest() {
         this.orderItemsDtoList = new ArrayList<>();
+    }
+
+    public OrderRequest(List<OrderItemsDto> orderItemsDtoList, String shippingAddress, Date orderDate, int userId) {
+        this.orderItemsDtoList = orderItemsDtoList;
+        this.shippingAddress = shippingAddress;
+        this.orderDate = orderDate;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     
     public List<OrderItemsDto> getOrderItemsDtoList() {

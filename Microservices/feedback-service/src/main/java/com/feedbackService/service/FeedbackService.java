@@ -43,6 +43,7 @@ public class FeedbackService {
         Feedback feedback = new Feedback();
         feedback.setCreationDate(new Date());
         feedback.setMessage(feedbackRequest.getMessage());
+        feedback.setUserId(feedbackRequest.getUserId());
         return feedback;
     }
 

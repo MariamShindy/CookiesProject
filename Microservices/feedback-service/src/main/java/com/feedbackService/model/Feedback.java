@@ -10,16 +10,26 @@ public class Feedback {
     int id;
     String message ;
     Date creationDate;
+    int userId; // User identifier
+
     public Feedback(){
 
     }
 
-    public Feedback(int id, String message, Date creationDate) {
+    public Feedback(int id, String message, Date creationDate, int userId) {
         this.id = id;
         this.message = message;
         this.creationDate = creationDate;
+        this.userId = userId;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getId() {
         return id;

@@ -40,6 +40,7 @@ public class OrderService {
         //  properties like status and shipping address can be set here if needed
         order.setShipping_Address(orderRequest.getShippingAddress());
         order.setStatus("Shipping");
+        order.setUserId(orderRequest.getUserId());
         // Save the order to the database
         orderRepository.save(order);
     }
