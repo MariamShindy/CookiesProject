@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/Microservices/DiscoveryServer/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wishlist-service (1) (com.MicroserviceProject)" />
+        <module name="product-service (2) (com.MicroserviceProject)" />
+        <module name="wishlist-service (2) (com.MicroserviceProject)" />
         <module name="cart-service" />
-        <module name="order-service (1) (com.MicroserviceProject)" />
-        <module name="product-service (1) (com.MicroserviceProject)" />
+        <module name="wishlist-service (1) (wishlist.example)" />
+        <module name="feedback-service (1) (com.FeedbackService)" />
         <module name="cart-service (1) (com.MicroserviceProject)" />
+        <module name="order-service (1) (com.orderService)" />
         <module name="product-service" />
         <module name="user-service" />
-        <module name="order-service" />
-        <module name="user-service (1) (com.MicroserviceProject)" />
+        <module name="user-service (2) (com.MicroserviceProject)" />
         <module name="feedback-service" />
         <module name="wishlist-service" />
         <module name="feedback-service (1) (com.MicroserviceProject)" />
+        <module name="wishlist-service (1) (com.MicroserviceProject)" />
+        <module name="order-service (1) (com.MicroserviceProject)" />
+        <module name="cart-service (1) (com.cartService)" />
+        <module name="product-service (1) (com.MicroserviceProject)" />
+        <module name="cart-service (2) (com.MicroserviceProject)" />
+        <module name="product-service (1) (com.example)" />
+        <module name="order-service" />
+        <module name="user-service (1) (com.MicroserviceProject)" />
+        <module name="order-service (2) (com.MicroserviceProject)" />
+        <module name="user-service (1) (com.example)" />
+        <module name="feedback-service (2) (com.MicroserviceProject)" />
       </profile>
     </annotationProcessing>
   </component>
@@ -25,16 +40,28 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cart-service" options="-parameters" />
       <module name="cart-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="cart-service (1) (com.cartService)" options="-parameters" />
+      <module name="cart-service (2) (com.MicroserviceProject)" options="-parameters" />
       <module name="feedback-service" options="-parameters" />
+      <module name="feedback-service (1) (com.FeedbackService)" options="-parameters" />
       <module name="feedback-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="feedback-service (2) (com.MicroserviceProject)" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="order-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="order-service (1) (com.orderService)" options="-parameters" />
+      <module name="order-service (2) (com.MicroserviceProject)" options="-parameters" />
       <module name="product-service" options="-parameters" />
       <module name="product-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="product-service (1) (com.example)" options="-parameters" />
+      <module name="product-service (2) (com.MicroserviceProject)" options="-parameters" />
       <module name="user-service" options="-parameters" />
       <module name="user-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="user-service (1) (com.example)" options="-parameters" />
+      <module name="user-service (2) (com.MicroserviceProject)" options="-parameters" />
       <module name="wishlist-service" options="-parameters" />
       <module name="wishlist-service (1) (com.MicroserviceProject)" options="-parameters" />
+      <module name="wishlist-service (1) (wishlist.example)" options="-parameters" />
+      <module name="wishlist-service (2) (com.MicroserviceProject)" options="-parameters" />
     </option>
   </component>
 </project>
