@@ -37,5 +37,4 @@ public class ProductController {
         ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:9095/api/wishlist/addItemToWishlist",productRequest,String.class);
         return response;
     }
-
 }

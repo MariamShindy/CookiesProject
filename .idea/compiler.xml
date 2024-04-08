@@ -11,23 +11,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="product-service (2) (com.MicroserviceProject)" />
         <module name="wishlist-service (2) (com.MicroserviceProject)" />
-        <module name="cart-service" />
         <module name="wishlist-service (1) (wishlist.example)" />
-        <module name="feedback-service (1) (com.FeedbackService)" />
         <module name="cart-service (1) (com.MicroserviceProject)" />
         <module name="order-service (1) (com.orderService)" />
-        <module name="product-service" />
         <module name="user-service" />
-        <module name="user-service (2) (com.MicroserviceProject)" />
         <module name="feedback-service" />
-        <module name="wishlist-service" />
         <module name="feedback-service (1) (com.MicroserviceProject)" />
         <module name="wishlist-service (1) (com.MicroserviceProject)" />
-        <module name="order-service (1) (com.MicroserviceProject)" />
+        <module name="discovery-server" />
         <module name="cart-service (1) (com.cartService)" />
         <module name="product-service (1) (com.MicroserviceProject)" />
         <module name="cart-service (2) (com.MicroserviceProject)" />
         <module name="product-service (1) (com.example)" />
+        <module name="cart-service" />
+        <module name="feedback-service (1) (com.FeedbackService)" />
+        <module name="product-service" />
+        <module name="user-service (2) (com.MicroserviceProject)" />
+        <module name="wishlist-service" />
+        <module name="order-service (1) (com.MicroserviceProject)" />
         <module name="order-service" />
         <module name="user-service (1) (com.MicroserviceProject)" />
         <module name="order-service (2) (com.MicroserviceProject)" />
@@ -42,6 +43,7 @@
       <module name="cart-service (1) (com.MicroserviceProject)" options="-parameters" />
       <module name="cart-service (1) (com.cartService)" options="-parameters" />
       <module name="cart-service (2) (com.MicroserviceProject)" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
       <module name="feedback-service" options="-parameters" />
       <module name="feedback-service (1) (com.FeedbackService)" options="-parameters" />
       <module name="feedback-service (1) (com.MicroserviceProject)" options="-parameters" />
