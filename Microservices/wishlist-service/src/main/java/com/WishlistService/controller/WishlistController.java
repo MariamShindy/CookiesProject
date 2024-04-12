@@ -26,9 +26,9 @@ public class WishlistController {
         return ResponseEntity.ok(addedItem);
     }
 
-    @DeleteMapping("/{wishlistId}")
-    public ResponseEntity<Void> removeItemFromWishlist(@PathVariable int wishlistId) {
-        wishlistService.removeItemFromWishlist(wishlistId);
+    @DeleteMapping("/{userId}/items/{productId}")
+    public ResponseEntity<Void> removeFromWishlist(@PathVariable int userId, @PathVariable int productId) {
+        wishlistService.removeItemFromWishlist(userId, productId);
         return ResponseEntity.noContent().build();
     }
 

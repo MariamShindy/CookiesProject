@@ -27,9 +27,9 @@ public class CartController {
         return ResponseEntity.ok(addedItem);
     }
 
-    @DeleteMapping("/{cartId}")
-    public ResponseEntity<Void> removeItemFromCart(@PathVariable int cartId) {
-        cartService.removeItemFromCart(cartId);
+    @DeleteMapping("/remove/{userId}/{productId}")
+    public ResponseEntity<Void> removeItemFromCart(@PathVariable int userId, @PathVariable int productId) {
+        cartService.removeItemFromCart(userId, productId);
         return ResponseEntity.noContent().build();
     }
 
@@ -37,6 +37,12 @@ public class CartController {
     public ResponseEntity<Void> removeItemsFromCartToOrder(@PathVariable int userId) {
         cartService.removeItemsFromCartToOrder(userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/update/{userId}/{productId}")
+    public ResponseEntity<Void> updateItemQuantity(@PathVariable int userId, @PathVariable int productId, @RequestParam int quantity) {
+        cartService.updateItemQuantity(userId, productId, quantity);
+        return ResponseEntity.ok().build();
     }
 
 

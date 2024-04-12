@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -20,6 +21,30 @@ public class OrderService {
     private OrderRepository orderRepository;
     @Transactional
     public void placeOrder(OrderRequest orderRequest){
+        Order order = mapFromOrderRequestToOrder(orderRequest);
+        orderRepository.save(order);
+    }
+    private BigDecimal calculateTotalPrice(List<OrderItem> orderItemsList) {
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        for (OrderItem orderItem : orderItemsList) {
+            totalPrice = totalPrice.add(orderItem.getSubTotal());
+        }
+        return totalPrice;
+    }
+
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
+    }
+
+    public Optional<Order> getOrderById(long orderId) {
+        return orderRepository.findById(orderId);
+    }
+
+    public List<Order> getOrdersByUserId(int userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
+    private Order mapFromOrderRequestToOrder(OrderRequest orderRequest){
         Order order = new Order();
         List<OrderItem> orderItemsList = new ArrayList<>();
         // Iterate over each OrderItemsDto from the OrderRequest and create corresponding OrderItem objects
@@ -41,14 +66,6 @@ public class OrderService {
         order.setShipping_Address(orderRequest.getShippingAddress());
         order.setStatus("Shipping");
         order.setUserId(orderRequest.getUserId());
-        // Save the order to the database
-        orderRepository.save(order);
-    }
-    private BigDecimal calculateTotalPrice(List<OrderItem> orderItemsList) {
-        BigDecimal totalPrice = BigDecimal.ZERO;
-        for (OrderItem orderItem : orderItemsList) {
-            totalPrice = totalPrice.add(orderItem.getSubTotal());
-        }
-        return totalPrice;
+        return order;
     }
 }

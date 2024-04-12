@@ -29,12 +29,12 @@ public class ProductController {
     }
     @PostMapping("/addToCart/{userId}")
     public ResponseEntity<String> addToCart(@PathVariable int userId , @RequestBody ProductRequest productRequest){
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:9090/api/cart/addToCart",productRequest,String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("http://cart-service/api/cart/addToCart",productRequest,String.class);
         return response;
     }
-    @PostMapping("/addToCart/{userId}")
+    @PostMapping("/addToWishlist/{userId}")
     public ResponseEntity<String> addToWishlist(@PathVariable int userId , @RequestBody ProductRequest productRequest){
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:9095/api/wishlist/addItemToWishlist",productRequest,String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("http://wishlist-service/api/wishlist/addItemToWishlist",productRequest,String.class);
         return response;
     }
 }

@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "\"ApplicationUsers\"")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "\"ApplicationUser\"")
+@DiscriminatorColumn(name = "user_type",discriminatorType = DiscriminatorType.STRING)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WishlistService {
@@ -14,6 +15,7 @@ public class WishlistService {
     private WishlistRepository wishlistRepository;
 
     public List<Wishlist> getUserWishlist(int userId) {
+
         return wishlistRepository.findByUserId(userId);
     }
 
@@ -22,8 +24,15 @@ public class WishlistService {
         return wishlistRepository.save(wishlistItem);
     }
 
-    public void removeItemFromWishlist(int wishlistId) {
-        wishlistRepository.deleteById(wishlistId);
+    public void removeItemFromWishlist(int userId , int productId) {
+
+        Optional<Wishlist> wishlistItemOptional = wishlistRepository.findByUserIdAndProductId(userId, productId);
+        if (wishlistItemOptional.isPresent()) {
+            Wishlist wishlistItem = wishlistItemOptional.get();
+            wishlistRepository.delete(wishlistItem);
+        } else {
+            throw new IllegalArgumentException("Wishlist item with Product ID " + productId + " does not exist for user ID " + userId + ".");
+        }
     }
 
     private Wishlist mapWishlistItemRequestToWishlistItem(WishlistRequest wishlistItemRequest){

@@ -13,6 +13,7 @@ import java.security.Principal;
 public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
+
     @PostMapping("/addFeedback")
     public void addFeedback(FeedbackRequest feedbackRequest , Principal principal){
         int userId = Integer.parseInt(principal.getName());
@@ -23,6 +24,7 @@ public class FeedbackController {
     //admin will use this method
     @GetMapping("/getFeedbackById/{id}")
     public Feedback getFeedbackById(@PathVariable int id) {
+
         return feedbackService.getFeedbackById(id);
     }
 
@@ -34,6 +36,7 @@ public class FeedbackController {
     //admin will use this method
     @DeleteMapping("/deleteFeedback/{id}")
     public void deleteFeedback(@PathVariable int id) {
+
         feedbackService.deleteFeedback(id);
     }
 }
