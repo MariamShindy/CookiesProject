@@ -21,6 +21,7 @@
         <module>user-service</module>
         <module>feedback-service</module>
         <module>eureka-server</module>
+        <module>api-gateway</module>
     </modules>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

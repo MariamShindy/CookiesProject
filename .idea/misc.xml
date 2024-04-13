@@ -16,6 +16,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Microservices/API-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/Microservices/apis-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/Microservices/discovery-server/pom.xml" />
       </set>
     </option>

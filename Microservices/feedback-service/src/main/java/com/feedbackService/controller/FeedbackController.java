@@ -36,7 +36,6 @@ public class FeedbackController {
     //admin will use this method
     @DeleteMapping("/deleteFeedback/{id}")
     public void deleteFeedback(@PathVariable int id) {
-
         feedbackService.deleteFeedback(id);
     }
 }

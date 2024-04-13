@@ -29,6 +29,7 @@
         <module name="user-service (2) (com.MicroserviceProject)" />
         <module name="wishlist-service" />
         <module name="order-service (1) (com.MicroserviceProject)" />
+        <module name="api-gateway" />
         <module name="order-service" />
         <module name="user-service (1) (com.MicroserviceProject)" />
         <module name="order-service (2) (com.MicroserviceProject)" />
@@ -37,11 +38,16 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="API-gateway" target="17" />
+      <module name="apis-gateway" target="17" />
       <module name="discovery-server" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="API-gateway" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
+      <module name="apis-gateway" options="-parameters" />
       <module name="cart-service" options="-parameters" />
       <module name="cart-service (1) (com.MicroserviceProject)" options="-parameters" />
       <module name="cart-service (1) (com.cartService)" options="-parameters" />
