@@ -27,6 +27,12 @@ public class ProductController {
     public List<ProductResponse> getAllProducts(){
         return productService.getAllProducts();
     }
+    @GetMapping("/api/products/{id}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable int id) {
+        ProductResponse productResponse = productService.getProductById(id);
+        return ResponseEntity.ok(productResponse);
+    }
+
     @PostMapping("/addToCart/{userId}")
     public ResponseEntity<String> addToCart(@PathVariable int userId , @RequestBody ProductRequest productRequest){
         ResponseEntity<String> response = restTemplate.postForEntity("http://cart-service/api/cart/addToCart",productRequest,String.class);

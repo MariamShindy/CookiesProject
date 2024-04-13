@@ -31,6 +31,11 @@ public class ProductService {
         return products.stream().map(this:: mapproductToProductResponse).collect(Collectors.toList());
     }
 
+    public ProductResponse getProductById(int id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with id: " + id));
+        return mapproductToProductResponse(product);
+    }
     //Product ==> ProductResponse
     private ProductResponse mapproductToProductResponse(Product product){
         ProductResponse productResponse = new ProductResponse();
