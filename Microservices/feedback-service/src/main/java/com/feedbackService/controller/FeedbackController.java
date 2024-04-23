@@ -4,6 +4,7 @@ import com.feedbackService.dto.FeedbackRequest;
 import com.feedbackService.model.Feedback;
 import com.feedbackService.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -14,10 +15,14 @@ public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
 
+    @GetMapping("")
+    public String contact() {
+        return "contact"; // Assuming contact.html is located in the appropriate directory
+    }
+
     @PostMapping("/addFeedback")
-    public void addFeedback(FeedbackRequest feedbackRequest , Principal principal){
-        int userId = Integer.parseInt(principal.getName());
-        feedbackRequest.setUserId(userId);
+    public void addFeedback(FeedbackRequest feedbackRequest){
+
         feedbackService.addFeedback(feedbackRequest);
     }
 

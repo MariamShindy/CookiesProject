@@ -20,13 +20,20 @@ public class OrderController {
     private  OrderService orderService;
     @Autowired
     private RestTemplate restTemplate;
+
     @PostMapping("/placeOrder")
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest , Principal principal){
-        int userId = Integer.parseInt(principal.getName());
-        orderRequest.setUserId(userId);
+        if (principal != null) {
+            int userId = Integer.parseInt(principal.getName());
+            orderRequest.setUserId(userId);
+        } else {
+            // If there's no authenticated user, set a default user ID
+            orderRequest.setUserId(1);
+        }
         orderService.placeOrder(orderRequest);
-        restTemplate.delete("http://cart-service/api/cart/removeItemsFromCartToOrder/{userId}", orderRequest.getUserId());
+        //restTemplate.delete("http://cart-service/api/cart/removeItemsFromCartToOrder/{userId}", orderRequest.getUserId());
+        //restTemplate.delete("http://localhost:9091/api/cart/removeItemsFromCartToOrder/{userId}", orderRequest.getUserId());
         return "Order Placed Successfully";
     }
     @GetMapping

@@ -109,20 +109,8 @@
                   </th> -->
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <!-- <th scope="row" class="border-0">
-                    <div class="p-2">
-                      <img src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                      <div class="ml-3 d-inline-block align-middle">
-                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                      </div>
-                    </div>
-                  </th> -->
-                  <td class="border-0 align-middle"><strong>20/11/2023</strong></td>
-                  <td class="border-0 align-middle"><strong>3000</strong></td>
-                  <td class="border-0 align-middle"><strong>102329332</strong></td>
-                </tr>
+              <tbody id="orders-table">
+
               </tbody>
             </table>
           </div>
@@ -211,5 +199,46 @@
         <!-- footer section -->
     
       </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Function to fetch orders data from the API
+        function fetchOrders(userId) {
+          var apiUrl = "http://localhost:9092/api/order/user/" + userId;
+          $.ajax({
+            url: apiUrl,
+            type: "GET",
+            success: function(data) {
+              // Update the table with the received data
+              updateOrdersTable(data);
+            },
+            error: function(error) {
+              console.log("Error fetching orders:", error);
+            }
+          });
+        }
+
+        // Function to update the orders table with the received data
+        function updateOrdersTable(orders) {
+          var tableBody = $("#orders-table tbody");
+          tableBody.empty();
+
+          orders.forEach(function(order) {
+            var row = $("<tr>");
+            row.append($("<td>").text(order.orderDate));
+            row.append($("<td>").text(order.totalPrice));
+            row.append($("<td>").text(order.id));
+            tableBody.append(row);
+          });
+        }
+
+        // Call the fetchOrders function with the desired user ID
+        fetchOrders(1); // Replace 1 with the actual user ID
+
+        // You can add event listeners or perform other actions here
+        // as needed for your application
+      });
+    </script>
 </body>
 </html>
