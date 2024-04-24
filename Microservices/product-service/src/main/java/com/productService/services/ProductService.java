@@ -9,6 +9,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,21 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("Product not found with id: " + id));
         return mapproductToProductResponse(product);
     }
+
+    public void deleteProduct(int id){
+        productRepository.deleteById(id);
+    }
+
+    public ResponseEntity<Product> updateProduct(int id , ProductRequest productRequest){
+        Product product = new Product();
+        product.setDescription(productRequest.getDescription());
+        product.setImage(productRequest.getImage());
+        product.setPrice(productRequest.getPrice());
+        product.setAvailableQuantity(productRequest.getAvailableQuantity());
+        product.setName(productRequest.getName());
+        return ResponseEntity.ok(product);
+    }
+
     //Product ==> ProductResponse
     private ProductResponse mapproductToProductResponse(Product product){
         ProductResponse productResponse = new ProductResponse();

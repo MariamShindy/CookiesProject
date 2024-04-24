@@ -1,39 +1,24 @@
 package com.UserService.dto;
 
+import com.UserService.model.Role;
+
 public class UserRequest {
 
-    String userName ;
-    String phone ;
+    String fristName;
+    String lastName;
     String email;
     String password ;
-    String address ;
-    int userType ;
+    Role role;
     public UserRequest(){
 
     }
-    public UserRequest( String userName, String phone, String email, String password, String address, int userType) {
-        this.userName = userName;
-        this.phone = phone;
+
+    public UserRequest(String fristName, String lastName, String email, String password, Role role) {
+        this.fristName = fristName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.address = address;
-        this.userType = userType;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+        this.role = role;
     }
 
     public String getEmail() {
@@ -52,19 +37,27 @@ public class UserRequest {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getFristName() {
+        return fristName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setFristName(String fristName) {
+        this.fristName = fristName;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

@@ -1,37 +1,38 @@
 package com.UserService.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "\"ApplicationUser\"")
-@DiscriminatorColumn(name = "user_type",discriminatorType = DiscriminatorType.STRING)
-public class User {
+//@DiscriminatorColumn(name = "user_type",discriminatorType = DiscriminatorType.STRING)
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id ;
-    String userName ;
-    String phone ;
+    String fristName;
+    String lastName;
     String email;
     String password ;
-    String address ;
-    int userType ;
+    Role role;
     public User(){
 
     }
 
-    public User(int id, String userName, String phone, String email, String password, String address, int userType) {
+    public User(int id, String fristName, String lastName, String email, String password, Role role) {
         this.id = id;
-        this.userName = userName;
-        this.phone = phone;
+        this.fristName = fristName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.address = address;
-        this.userType = userType;
+        this.role = role;
     }
-
 
     public int getId() {
         return id;
@@ -41,20 +42,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFristName() {
+        return fristName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFristName(String fristName) {
+        this.fristName = fristName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -65,29 +74,43 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public int getUserType() {
-        return userType;
+    @Override
+    public String getUsername() {
+        return email;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }

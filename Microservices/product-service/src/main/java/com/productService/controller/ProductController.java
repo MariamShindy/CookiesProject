@@ -33,6 +33,16 @@ public class ProductController {
         return ResponseEntity.ok(productResponse);
     }
 
+    @DeleteMapping("/api/products/deleteProduct/{id}")
+        public void deleteProductById (@PathVariable int id){
+            productService.deleteProduct(id);
+    }
+
+    @PutMapping("/api/products/updateProduct/{id}")
+    public void updateProductById(@PathVariable int id , @RequestBody ProductRequest productRequest){
+        productService.updateProduct(id , productRequest);
+    }
+
     @PostMapping("/addToCart/{userId}")
     public ResponseEntity<String> addToCart(@PathVariable int userId , @RequestBody ProductRequest productRequest){
         ResponseEntity<String> response = restTemplate.postForEntity("http://cart-service/api/cart/addToCart",productRequest,String.class);
