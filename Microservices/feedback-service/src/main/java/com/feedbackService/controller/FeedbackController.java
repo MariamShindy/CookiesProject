@@ -36,7 +36,7 @@ public class FeedbackController {
     //admin will use this method
     @PutMapping("/updateFeedback/{id}")
     public Feedback updateFeedback(@PathVariable int id, @RequestBody FeedbackRequest feedbackRequest) {
-        return feedbackService.updateReview(id, feedbackRequest);
+        return feedbackService.updateFeedback(id, feedbackRequest);
     }
     //admin will use this method
     @DeleteMapping("/deleteFeedback/{id}")

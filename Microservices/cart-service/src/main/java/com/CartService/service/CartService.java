@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class CartService {
     @Autowired
     private CartRepository cartRepository;
+    private static final Logger logger = Logger.getLogger(CartService.class.getName());
 
     public List<Cart> getUserCart(int userId) {
-
         return cartRepository.findByUserId(userId);
     }
 
@@ -42,6 +43,7 @@ public class CartService {
         if (cartItemOptional.isPresent()) {
             // If the cart item exists, delete it from the repository
             cartRepository.delete(cartItemOptional.get());
+            logger.info("Cart item deleted successfully");
         } else {
             throw new IllegalArgumentException("Cart item with Product ID " + productId + " does not exist for user ID " + userId + ".");
         }
@@ -51,6 +53,7 @@ public class CartService {
     public void removeItemsFromCartToOrder(int userId){
      List<Cart> userCart = cartRepository.findByUserId(userId);
      cartRepository.deleteAll();
+     logger.info("Cart items deleted successfully after placing the order");
     }
 
     public void updateItemQuantity(int userId, int productId, int quantity) {
@@ -62,6 +65,7 @@ public class CartService {
             Cart cartEntry = cartEntryOptional.get();
             cartEntry.setQuantity(quantity);
             cartRepository.save(cartEntry);
+            logger.info("Item quantity updated successfully");
         } else {
             throw new IllegalArgumentException("Cart item with Product ID " + productId + " does not exist for user ID " + userId + ".");
         }

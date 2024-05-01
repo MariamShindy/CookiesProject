@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 @Service
 @RequiredArgsConstructor
@@ -34,8 +35,10 @@ private AuthenticationManager authenticationManager;
 @Autowired
 private JWTService jwtService;
 
+    private static final Logger logger = Logger.getLogger(AuthServiceImplementation.class.getName());
 
    public User SignUp(SignUpRequest signUpRequest){
+       logger.info("Starting sign up process");
     User user = new User();
     user.setEmail(signUpRequest.getEmail());
     user.setFristName(signUpRequest.getFirstname());
@@ -45,6 +48,7 @@ private JWTService jwtService;
      return  userRepository.save(user);
 }
 public JwtAuthenticationResponse SignIn(SigninRequest signinRequest){
+    logger.info("Starting sign in process");
     authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getEmail(),signinRequest.getPassword()));
     var user = userRepository.findByEmail(signinRequest.getEmail()).orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
     var jwt = jwtService.generateToken(user);
@@ -67,6 +71,5 @@ public JwtAuthenticationResponse RefreshToken (RefreshTokenRequest refreshTokenR
     }
     return null;
 }
-
 
 }

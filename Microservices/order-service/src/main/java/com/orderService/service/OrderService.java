@@ -14,15 +14,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
+    private static final Logger logger = Logger.getLogger(OrderService.class.getName());
+
     @Transactional
     public void placeOrder(OrderRequest orderRequest){
         Order order = mapFromOrderRequestToOrder(orderRequest);
         orderRepository.save(order);
+        logger.info("Order placed successfully");
     }
     private BigDecimal calculateTotalPrice(List<OrderItem> orderItemsList) {
         BigDecimal totalPrice = BigDecimal.ZERO;

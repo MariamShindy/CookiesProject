@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import java.util.List;
@@ -19,11 +21,14 @@ import java.util.List;
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
+    private static final Logger logger = Logger.getLogger(ProductService.class.getName());
+
 
     @Transactional
     public void createProduct(ProductRequest productRequest) {
         Product product = mapProductRequestToProduct(productRequest);
         productRepository.save(product);
+        logger.info("Product created successfully");
     }
 
     @Transactional
@@ -40,6 +45,7 @@ public class ProductService {
 
     public void deleteProduct(int id){
         productRepository.deleteById(id);
+        logger.info("Product with id"+ id +"deleted successfully");
     }
 
     public ResponseEntity<Product> updateProduct(int id , ProductRequest productRequest){
