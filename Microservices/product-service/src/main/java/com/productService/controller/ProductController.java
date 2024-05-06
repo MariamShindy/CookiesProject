@@ -11,12 +11,14 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/api/product")
 public class ProductController {
     @Autowired
     private ProductService productService;
     @Autowired
     private RestTemplate restTemplate;
+
     @PostMapping("/createProduct")
     @ResponseStatus(HttpStatus.CREATED)
     public void createProduct(@RequestBody ProductRequest productRequest){
@@ -32,7 +34,6 @@ public class ProductController {
         ProductResponse productResponse = productService.getProductById(id);
         return ResponseEntity.ok(productResponse);
     }
-
     @DeleteMapping("/api/products/deleteProduct/{id}")
         public void deleteProductById (@PathVariable int id){
             productService.deleteProduct(id);
